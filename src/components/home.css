@@ -1,0 +1,8 @@
+.shorturl{
+    margin-top:50px;
+    color: tomato;
+    font-size: 12px;
+    padding: 0px 50px 10px 50px;
+    word-wrap:break-word;
+    cursor: copy;
+}

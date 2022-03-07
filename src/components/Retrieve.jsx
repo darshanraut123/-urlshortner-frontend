@@ -1,0 +1,96 @@
+import { Link, useNavigate } from "react-router-dom";
+import checkAuth from "../Auth";
+import "./home.css";
+import { useContext, useEffect, useState, useRef } from "react";
+import { LoadingContext } from "../App";
+import { Rings } from "react-loader-spinner";
+import axios from "axios";
+
+function Retrieve(props) {
+  const shortUrl = useRef();
+
+  const { load, setLoad } = useContext(LoadingContext);
+  const [retrievedUrl, setRetrievedUrl] = useState(
+    "RETRIEVED FULL URL WILL BE UPDATED HERE"
+  );
+
+  const navigate = useNavigate();
+  useEffect(async () => {
+    setLoad(true);
+    if (await checkAuth()) {
+      navigate("/");
+      setTimeout(() => {
+        setLoad(false);
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        setLoad(false);
+      }, 2000);
+      props.setLogOutBtn(true);
+    }
+  }, []);
+  const headers = { authorization: localStorage.getItem("authorization") };
+
+  async function handleRetrieve(url) {
+    try {
+      setRetrievedUrl("RETRIEVED FULL URL WILL BE UPDATED HERE");
+      if (!url) return;
+      const response = await axios.get(url, {
+        headers,
+      });
+      if (response.status === 200) {
+        setRetrievedUrl(response.data.response);
+        shortUrl.current.value = "";
+      } else setRetrievedUrl("Invalid URL");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  return load ? (
+    <div className="loadingicon">
+      <Rings color="#00BFFF" height={100} width={100} />
+    </div>
+  ) : (
+    <div className="container">
+      <div className="row">
+        <div className="col-2"></div>
+        <div className="col-8 box-container">
+          <div className="loginbox">
+            <div className="head">
+              <h2>RETRIEVE</h2>
+              <small>Please paste your short URL to proceed!</small>
+            </div>
+            <div className="inputbody">
+              <input ref={shortUrl} type="text" placeholder="Paste short URL" />
+            </div>
+            <div className="foot">
+              <button
+                type="button"
+                className="btn btn-outline-light"
+                name="shorten"
+                id="shorten"
+                onClick={() => handleRetrieve(shortUrl.current.value)}
+              >
+                Retrieve
+              </button>
+
+              <div>
+                <label>
+                  Want to convert to short URL?
+                  <Link to="/convert"> Click here</Link>
+                </label>
+              </div>
+              <div>
+                <p className="shorturl">{retrievedUrl}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-2"></div>
+      </div>
+    </div>
+  );
+}
+
+export default Retrieve;
