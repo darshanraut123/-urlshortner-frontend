@@ -33,9 +33,8 @@ async function handleVerify() {
         `https://url-shortner-app-in.herokuapp.com/api/verify/${token}`
         );
         setLoad(false);
-      if (response.status === 200)
+      if (response.status === 200){
         setVerificationMessage(response.data.response);
-      else {
         setVerificationMessage(
           "Verification Success!!! You will be redirected to login page in 5 seconds..."
         );
@@ -51,6 +50,7 @@ async function handleVerify() {
     setVerificationMessage("Verification Unsuccessful!!!");
   }
 }
+    
     return load ? (
       <div className="loadingicon">
         <Rings color="#00BFFF" height={100} width={100} />
