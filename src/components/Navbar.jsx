@@ -1,13 +1,10 @@
-import { useState,useEffect, useContext } from "react";
 import {useNavigate} from 'react-router-dom';
-import {LoadingContext} from '../App';
+import "./navbar.css";
 function Navbar(props) {
 
-  const context  = useContext(LoadingContext);
 
 const navigate = useNavigate();
 
-// console.log(props)
 function handleLogout(){
   localStorage.clear();
   navigate('/');
@@ -15,11 +12,11 @@ function handleLogout(){
 }
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid bg-dark">
       <div className="row">
-        <div className="col">
+        <div className="col-12">
             <div className="navbar">
-              <div>URL Shortner Application</div>
+              <div>URL Shortener Application</div>
               {props.logoutBtn?<button className="btn btn-danger" onClick={()=>handleLogout()}>Logout</button>:null}
             </div>
           </div>

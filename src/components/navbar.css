@@ -1,0 +1,6 @@
+.container-fluid{
+    position: sticky;
+    top:0px
+}
+.row{padding-left: 20px;
+padding-right: 20px;}

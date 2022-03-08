@@ -5,6 +5,9 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { LoadingContext } from "../App";
 import { Rings } from "react-loader-spinner";
 import axios from "axios";
+import ReactTooltip from "react-tooltip";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function Retrieve(props) {
   const shortUrl = useRef();
@@ -14,6 +17,11 @@ function Retrieve(props) {
     "RETRIEVED FULL URL WILL BE UPDATED HERE"
   );
 
+  async function copyToClipboard() {
+    await window.navigator.clipboard.writeText(retrievedUrl);
+    toast("Copied to Clipboard!");
+  }
+
   const navigate = useNavigate();
   useEffect(async () => {
     setLoad(true);
@@ -21,11 +29,11 @@ function Retrieve(props) {
       navigate("/");
       setTimeout(() => {
         setLoad(false);
-      }, 2000);
+      }, 1000);
     } else {
       setTimeout(() => {
         setLoad(false);
-      }, 2000);
+      }, 1000);
       props.setLogOutBtn(true);
     }
   }, []);
@@ -82,13 +90,34 @@ function Retrieve(props) {
                 </label>
               </div>
               <div>
-                <p className="shorturl">{retrievedUrl}</p>
+                <p
+                  data-for="copy"
+                  data-tip
+                  onClick={() => copyToClipboard()}
+                  className="shorturl"
+                >
+                  {retrievedUrl}
+                </p>{" "}
+                <ReactTooltip id="copy" place="top" effect="solid">
+                  Click to copy to clipboard
+                </ReactTooltip>
               </div>
             </div>
           </div>
         </div>
         <div className="col-2"></div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

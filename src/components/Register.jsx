@@ -1,10 +1,15 @@
-import { useState } from "react";
 import * as Yup from "yup";
-import { Formik, useFormik } from "formik";
+import {  useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
+import {useContext} from 'react';
 import axios from "axios";
+import { LoadingContext } from "../App";
+import { Rings } from "react-loader-spinner";
+
+
 function Register({ setEmailMessage }) {
+  const { load, setLoad } = useContext(LoadingContext);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -46,6 +51,7 @@ function Register({ setEmailMessage }) {
 
   async function handleSubmit({ email, fname, lname, byear, pass }) {
     try {
+      setLoad(true);
       const response = await axios.post(
         "https://url-shortner-app-in.herokuapp.com/api/signup",
         {
@@ -56,7 +62,7 @@ function Register({ setEmailMessage }) {
           birthyear: byear,
         }
       );
-      // console.log(props)
+      setLoad(false);
 
       if (response.status === 201 || response.status === 200) {
         setEmailMessage(response.data.message);
@@ -64,9 +70,15 @@ function Register({ setEmailMessage }) {
       }
     } catch (err) {
       console.log(err.message);
+      setLoad(false);
+
     }
   }
-  return (
+  return load ? (
+    <div className="loadingicon">
+      <Rings color="#00BFFF" height={100} width={100} />
+    </div>
+  ) :(
     <div className="container">
       <div className="row">
         <div className="col-2"></div>

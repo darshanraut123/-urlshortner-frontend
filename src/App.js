@@ -8,6 +8,7 @@ import Retrieve from "./components/Retrieve";
 import Forgotpassword from './components/Forgotpassword';
 import { createContext, useState } from "react";
 import Email from "./components/Email";
+import EmailVerify from "./components/EmailVerify";
 
 export const LoadingContext = createContext();
 
@@ -16,6 +17,7 @@ function App() {
   const [logoutBtn, setLogOutBtn] =  useState(false);
   const [load, setLoad] =  useState(false);
 
+  //https://url-shortner-app-frontend.herokuapp.com/
   return (
     <div className="App">
       <Routers>
@@ -28,6 +30,7 @@ function App() {
           <Route path="/register"  element={<Register setEmailMessage={setEmailMessage}/>}></Route>
           <Route path="/forgotpassword" element={<Forgotpassword />}></Route>
           <Route path="/retrieve" element={<Retrieve setLogOutBtn={setLogOutBtn}/>}></Route>
+          <Route path="/emailverify/:token" element={<EmailVerify/>}></Route>
         </Routes>
         </LoadingContext.Provider>
       </Routers>
