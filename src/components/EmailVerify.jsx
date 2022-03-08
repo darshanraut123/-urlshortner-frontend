@@ -34,7 +34,7 @@ async function handleVerify() {
         );
         setLoad(false);
       if (response.status === 200){
-        setVerificationMessage(response.data.response);
+        setVerificationMessage(response.data.message);
         setVerificationMessage(
           "Verification Success!!! You will be redirected to login page in 5 seconds..."
         );
