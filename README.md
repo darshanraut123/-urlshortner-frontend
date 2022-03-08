@@ -1,3 +1,23 @@
+
+![Screenshot (29)](https://user-images.githubusercontent.com/56134448/157321188-eccbc2d4-8f03-4ca8-b87d-81790185b9e1.png)
+![Screenshot (30)](https://user-images.githubusercontent.com/56134448/157321198-7f3c410e-472a-49fc-8206-342aeef42dcc.png)
+![Screenshot (15)](https://user-images.githubusercontent.com/56134448/157321205-6d0497f2-7116-432b-9802-753e2156537f.png)
+![Screenshot (16)](https://user-images.githubusercontent.com/56134448/157321206-607fc9d5-89a8-4f26-a192-0cba56959961.png)
+![Screenshot (17)](https://user-images.githubusercontent.com/56134448/157321208-0d68cf11-505f-426a-9b8b-15ad008e5e65.png)
+![Screenshot (18)](https://user-images.githubusercontent.com/56134448/157321213-9e962a64-4755-468b-a0e0-d999ba384b39.png)
+![Screenshot (19)](https://user-images.githubusercontent.com/56134448/157321214-cd1cc2a9-2e63-41c9-88f3-ad58237c27f2.png)
+![Screenshot (20)](https://user-images.githubusercontent.com/56134448/157321216-25c11f7f-c336-46e9-a5ae-a218e6dd917c.png)
+![Screenshot (21)](https://user-images.githubusercontent.com/56134448/157321223-90184b99-2acf-4805-83ed-d76106d0f677.png)
+![Screenshot (22)](https://user-images.githubusercontent.com/56134448/157321224-05e606cc-1756-482b-b507-386fbfc47ec4.png)
+![Screenshot (23)](https://user-images.githubusercontent.com/56134448/157321226-0e013105-921b-4755-ac29-db28a3747c82.png)
+![Screenshot (24)](https://user-images.githubusercontent.com/56134448/157321228-fdfcdeed-1fa0-493b-bef8-d426a95b7fc7.png)
+![Screenshot (25)](https://user-images.githubusercontent.com/56134448/157321230-87db3e9d-3341-4226-9045-2ac2e9389b6a.png)
+![Screenshot (26)](https://user-images.githubusercontent.com/56134448/157321232-b0a973f3-3ada-4883-b13e-62f7ee89da18.png)
+![Screenshot (27)](https://user-images.githubusercontent.com/56134448/157321239-a585409e-4211-4332-acd9-cd8861bccf4e.png)
+![Screenshot (28)](https://user-images.githubusercontent.com/56134448/157321242-a37966e3-0d17-4ce4-b06e-b5d7e54b2adc.png)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
