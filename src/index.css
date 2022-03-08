@@ -1,2 +1,21 @@
-*{
+
+body{
+    color:#e7e8df;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    min-height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+     overflow-x: hidden;
+     overflow-y: auto;
+}
+
+.loadingicon{
+    height: 91vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
 }

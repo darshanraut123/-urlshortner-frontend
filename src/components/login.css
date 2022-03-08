@@ -1,25 +1,22 @@
-body{
-    color:#e7e8df;
-
-min-height: 1vh;
-background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+*{
+    font-family: 'Nunito', sans-serif;
 }
-
-.container-fluid{
-    padding: 0 !important;
-}
+ 
 .navbar{
+    text-transform: uppercase;
     min-height: 50px;
     font-size: 25px;
     font-weight: 500;
-    background-color: #333236;
     padding: 5px 0px 5px 30px;
     margin: 0px;
+    padding: 0px;
+ 
 }
 .box-container{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 25px;
 }
 .loginbox{
     background-color: #333236;
@@ -31,13 +28,13 @@ background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117,
 }
 .head{
     display: flex;
-    margin: 50px 0px 40px 0px;
+    margin: 30px 0px 20px 0px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .head small{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .inputbody{
     display: flex;
@@ -72,6 +69,7 @@ background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117,
 .foot{
     display: flex;
     margin-top: 10px;
+    margin-bottom: 15px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -89,3 +87,4 @@ background-image: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117,
 
 .foot *:not(label,p){cursor: pointer;}
 
+a{text-decoration: none;}

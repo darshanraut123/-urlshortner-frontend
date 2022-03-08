@@ -3,8 +3,13 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "./home.css";
-import { useState } from "react";
+import { useState , useContext} from "react";
+import { LoadingContext } from "../App";
+import { Rings } from "react-loader-spinner";
+
+
 function Forgotpassword() {
+  const { load, setLoad } = useContext(LoadingContext);
   const [info, setInfo] = useState("");
   const formik = useFormik({
     initialValues: {
@@ -36,26 +41,34 @@ function Forgotpassword() {
 
   async function handleForgotPassword({ email, password, birthyear }) {
     try {
+      setLoad(true);
       const response = await axios.post(
         "https://url-shortner-app-in.herokuapp.com/api/forgotPassword",
         { email, password, birthyear }
       );
+      setLoad(false);
+      setInfo("Please enter your details to proceed!");
       //200 password changed
       //201 email not present please register
-      //202 email present bu birth guess is wrong
+      //202 email present but birth guess is wrong
 
       if (response.status === 200) {
         setInfo(response.data.message);
         formik.resetForm();
-      } else if (response.status === 201 || response.status === 201) {
+      } else if (response.status === 201 || response.status === 202) {
         setInfo(response.data.message);
       }
     } catch (err) {
+      setLoad(false);
       console.log(err.message);
     }
   }
 
-  return (
+  return load ? (
+    <div className="loadingicon">
+      <Rings color="#00BFFF" height={100} width={100} />
+    </div>
+  ) :(
     <div className="container">
       <div className="row">
         <div className="col-2"></div>

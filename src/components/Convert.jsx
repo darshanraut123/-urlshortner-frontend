@@ -5,6 +5,9 @@ import "./home.css";
 import { Rings } from "react-loader-spinner";
 import { LoadingContext } from "../App";
 import axios from "axios";
+import ReactTooltip from 'react-tooltip';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Convert(props) {
   const fullUrl = useRef();
@@ -14,6 +17,11 @@ function Convert(props) {
     "CONVERTED SHORT URL WILL BE UPDATED HERE"
   );
 
+  async function copyToClipboard(){
+    await window.navigator.clipboard.writeText(convertedUrl);
+    toast("Copied to Clipboard!");
+ }
+
   const navigate = useNavigate();
   useEffect(async () => {
     setLoad(true);
@@ -21,11 +29,11 @@ function Convert(props) {
       navigate("/");
       setTimeout(() => {
         setLoad(false);
-      }, 2000);
+      }, 1000);
     } else {
       setTimeout(() => {
         setLoad(false);
-      }, 2000);
+      }, 1000);
       props.setLogOutBtn(true);
     }
   }, []);
@@ -99,13 +107,40 @@ function Convert(props) {
                 </label>
               </div>
               <div>
-                <p className="shorturl">{convertedUrl}</p>
+                <p
+                  data-for="copy"
+                  data-tip
+                  onClick={() => copyToClipboard()}
+                  className="shorturl"
+                >
+                  {convertedUrl}
+                </p>
+                <ReactTooltip id="copy" place="top" effect="solid">
+                  Click to copy to clipboard
+                </ReactTooltip>
+
+                <div>
+
+
+                </div>
+
               </div>
             </div>
           </div>
         </div>
         <div className="col-2"></div>
       </div>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
     </div>
   );
 }

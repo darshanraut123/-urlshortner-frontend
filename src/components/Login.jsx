@@ -3,17 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useState } from "react";
+import { useState , useContext} from "react";
+import { LoadingContext } from "../App";
+import { Rings } from "react-loader-spinner";
 
 function Login() {
+  const { load, setLoad } = useContext(LoadingContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const handleLogin = async (values) => {
     try {
+      
+      setLoad(true);
       let response = await axios.post(
         "https://url-shortner-app-in.herokuapp.com/api/login",
         values
       );
+      setLoad(false);
       if (response.status === 200) {
         response = await response.data;
         localStorage.setItem("authorization", response.token);
@@ -38,17 +44,18 @@ function Login() {
     },
     validationSchema: Yup.object({
       email: Yup.string().email("Enter email only").required("Required field"),
-      password: Yup.string()
-        .min(5, "Must be more than 5 and less than 10 characters")
-        .max(10, "Must be more than 5 and less than 10 characters")
-        .required("Requried field"),
+      password: Yup.string().required("Requried field"),
     }),
     onSubmit: (values) => {
       handleLogin(values);
     },
   });
 
-  return (
+  return load ? (
+    <div className="loadingicon">
+      <Rings color="#00BFFF" height={100} width={100} />
+    </div>
+  ) :(
     <div className="container">
       <div className="row">
         <div className="col-2"></div>
